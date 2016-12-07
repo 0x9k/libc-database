@@ -1,0 +1,97 @@
+
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Libc Search{% endblock %}
+
+{% block head %}
+  {{super()}}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/images/branding/google_shortcut.ico" rel="shortcut icon">
+  <link href="/static/css/index.css" type="text/css" rel="stylesheet" >
+  <!-- <script src="http://cdn.rawgit.com/phi-jp/phina.js/v0.2.0/build/phina.js"></script> -->
+{% endblock %}
+
+{% block navbar %}
+<div id="navbar" class="navbar navbar-fixed-top nav" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand nav_a" href="/">
+          Libc Search
+        </a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav" id="nav_ul">
+          <!-http://www.colorhexa.com/->
+          <li style="background:#4285f4;"><a class="nav_a">L</a></li>
+          <li style="background:#ea4335;"><a class="nav_a">i</a></li>
+          <li style="background:#fbbd0b;"><a class="nav_a">b</a></li>
+          <li style="background:#4285f4;"><a class="nav_a">c</a></li>
+          <li style="background:#34a853;"><a class="nav_a"> </a></li>
+          <li style="background:#1266f1;"><a class="nav_a">s</a></li>
+          <li style="background:#12f19d;"><a class="nav_a">e</a></li>
+          <li style="background:#66f112;"><a class="nav_a">a</a></li>
+          <li style="background:#9d12f1;"><a class="nav_a">r</a></li>
+          <li style="background:#f19d12;"><a class="nav_a">c</a></li>
+          <li style="background:#f11266;"><a class="nav_a">h</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+<div class="container" id="content">
+
+  <div class="page-header">
+
+    <p style="text-align:center">
+      <img src="/static/images/branding/gnu-logo.jpg" alt="GNU_libc_logo" width=20%>
+    </p>
+
+  </div>
+
+  <div class="row" id="inputBar" style="margin:0 20%;">
+    <div class="input-group" style="text-align:center" >
+      {% if q %}
+        <input id="inputField" type="text" class="form-control" value = {{ q }}>
+      {% else %}
+        <input id="inputField" type="text" class="form-control">
+      {% endif %}
+        <span class="input-group-btn">
+          <button id="searchBtn" class="btn btn-default" type="button">Go!</button>
+        </span>
+    </div>
+  </div>
+
+  <br><br>
+
+    {% if search_info %}
+      <div class="alert alert-success" role="alert">{{ search_info }}</div>
+    {% endif %}
+    <!-- search results -->
+    <div class="alert alert-danger" role="alert"><p target="_blank"><h3>{{ libc_version_result }}</h3></p></div>
+    <div class="alert-warning" role="alert"><p target="_blank"><h3>{{ functions_result }}</h3></p></div>
+
+
+<!-- <script src='/static/js/piko.js'></script> -->
+
+<div class="footer" id="footer">
+  <div class="container">
+    <br>
+    <p Designed and built by target="_blank">0x9k   Google CSE   Bootstrap</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  {{super()}}
+  <script type="text/javascript" src="/static/js/index.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    // $("#content").empty();
+  });
+  </script>
+
+{% endblock %}
